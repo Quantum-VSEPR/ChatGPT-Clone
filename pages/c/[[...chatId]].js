@@ -21,7 +21,6 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
   const [generatingResponse, setGeneratingResponse] = useState(false);
   const [fullMessage, setFullMessage] = useState("");
   const router = useRouter();
-  const chatContainerRef = useRef(null);
   const focusInput = useRef(null);
 
   useEffect(() => {
@@ -99,13 +98,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
 
   const allMessages = [...messages, ...newChatMessages];
   // sm:grid-cols-[260px_1fr]
-  const scrollToBottom = () => {
-    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-  };
-  
-  useEffect(() => {
-    scrollToBottom();
-  }, [allMessages]);
+
   return (
     <>
       <Head>
@@ -113,10 +106,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
       </Head>
       <div className="grid h-screen grid-cols-1  bg-[#343541] sm:grid-cols-[260px_1fr]">
         <ChatSidebar chatId={chatId} />
-        <div
-          ref={chatContainerRef}
-          className="flex flex-col overflow-hidden p-5"
-        >
+        <div className="flex flex-col overflow-hidden p-5">
           <SimpleBar
             forceVisible="y"
             autoHide={true}
