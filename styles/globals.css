@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply rounded-md bg-emerald-600 px-6 py-2 text-white hover:bg-emerald-500 disabled:bg-emerald-300;
+  }
+  .side-menu-item {
+    @apply m-2 flex items-center gap-4 rounded-md p-2 hover:bg-gray-800;
+  }
+}
+
+/* base for accesing any tag component for accessing combined class names specificity is base=>components=>utilities */
+
+/* styles.css */
+/* Add your custom styles for the smooth scrollbar here */
+
+/* Example styles for a smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #222; /* Color of the thumb (the draggable part) */
+  border-radius: 5px; /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-track {
+  /* background-color: #cbd5e0;  */
+  /* background: #343541; */
+  /* background: black; */
+  padding: 20px;
+  margin: 1rem;
+
+  /* Color of the track (the non-draggable part) */
+}
