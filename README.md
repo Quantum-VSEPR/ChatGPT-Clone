@@ -145,15 +145,15 @@ npx playwright install chromium
 4. Deploy.
 5. Set `APP_BASE_URL` to your production URL (for example `https://your-domain.com`) in Vercel.
 6. In Auth0 Dashboard, go to `Applications` → your `Regular Web Application` → `Settings`, then update:
-	 - **Allowed Callback URLs**
-		 - `https://your-domain.com/auth/callback`
-		 - `http://localhost:3000/auth/callback`
-	 - **Allowed Logout URLs**
-		 - `https://your-domain.com`
-		 - `http://localhost:3000`
-	 - **Allowed Web Origins**
-		 - `https://your-domain.com`
-		 - `http://localhost:3000`
+   - **Allowed Callback URLs**
+     - `https://your-domain.com/auth/callback`
+     - `http://localhost:3000/auth/callback`
+   - **Allowed Logout URLs**
+     - `https://your-domain.com`
+     - `http://localhost:3000`
+   - **Allowed Web Origins**
+     - `https://your-domain.com`
+     - `http://localhost:3000`
 7. Save changes in Auth0 and redeploy in Vercel if env vars changed.
 
 ## Auth0 Setup Template
@@ -162,16 +162,16 @@ Use these values with your own domain:
 
 - **Application Type**: `Regular Web Application`
 - **Application Login URI** (optional):
-	- `https://your-domain.com`
+  - `https://your-domain.com`
 - **Allowed Callback URLs**:
-	- `https://your-domain.com/auth/callback`
-	- `http://localhost:3000/auth/callback`
+  - `https://your-domain.com/auth/callback`
+  - `http://localhost:3000/auth/callback`
 - **Allowed Logout URLs**:
-	- `https://your-domain.com`
-	- `http://localhost:3000`
+  - `https://your-domain.com`
+  - `http://localhost:3000`
 - **Allowed Web Origins**:
-	- `https://your-domain.com`
-	- `http://localhost:3000`
+  - `https://your-domain.com`
+  - `http://localhost:3000`
 
 These values match Auth0 Next.js SDK v4 routes used in this app (`/auth/login`, `/auth/logout`, `/auth/callback`) through `proxy.ts`.
 

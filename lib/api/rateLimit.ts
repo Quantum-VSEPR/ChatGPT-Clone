@@ -59,22 +59,22 @@ export const consumeDailyRequestLimit = async (
   const result = await db
     .collection<UserRateLimitDocument>(RATE_LIMIT_COLLECTION)
     .findOneAndUpdate(
-    { _id: documentId },
-    {
-      $inc: { count: 1 },
-      $set: {
-        userId,
-        dayKey,
-        updatedAt: now,
-        resetAt,
-        expiresAt: resetAt,
+      { _id: documentId },
+      {
+        $inc: { count: 1 },
+        $set: {
+          userId,
+          dayKey,
+          updatedAt: now,
+          resetAt,
+          expiresAt: resetAt,
+        },
+        $setOnInsert: {
+          createdAt: now,
+        },
       },
-      $setOnInsert: {
-        createdAt: now,
-      },
-    },
-    { upsert: true, returnDocument: "after" }
-  );
+      { upsert: true, returnDocument: "after" }
+    );
 
   const currentCount = result?.count ?? 0;
 
