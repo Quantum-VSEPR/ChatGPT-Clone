@@ -175,29 +175,34 @@ Use these values with your own domain:
 
 These values match Auth0 Next.js SDK v4 routes used in this app (`/auth/login`, `/auth/logout`, `/auth/callback`) through `proxy.ts`.
 
-## Auth + Routing Notes
+## Deploy (Vercel)
 
-- `proxy.ts` runs Auth0 middleware on app routes.
-- Auth is middleware-driven; there are no required route handlers under `app/auth` or `app/api/auth` in this version.
-- Logged-in users use `/chat` experience.
-- If a thread is deleted while open, client returns to `/chat`.
+1. Push repo to GitHub
+2. Import project in Vercel
+3. Add all env vars in Vercel Project Settings
+4. Set `APP_BASE_URL` to your production URL
+5. Update Auth0 callback/logout/web origin values to match your domain
+6. Deploy
 
-## Data Model (MongoDB)
+## Scripts
 
-Collection: `gpt-chat`
+- `pnpm dev`
+- `pnpm build`
+- `pnpm start`
+- `pnpm lint`
+- `pnpm test`
+- `pnpm test:watch`
+- `pnpm test:e2e`
 
-Each document contains:
+## Validation before shipping
 
-- `userId: string`
-- `title: string`
-- `messages: Array<{ _id, role, content }>`
+```bash
+pnpm test
+pnpm build
+```
 
-## Production Checklist
+## Notes
 
-- [ ] Set all required environment variables in Vercel
-- [ ] Verify `APP_BASE_URL` matches your production domain
-- [ ] Verify Auth0 Callback/Logout/Web Origins values match your domain
-- [ ] Verify authenticated users are limited to 30 `/api/chat/sendMessage` requests per UTC day
-- [ ] Verify MongoDB network access / IP allow list
-- [ ] Confirm Gemini key has sufficient quota
-- [ ] Run `pnpm build` successfully before deploy
+- Authentication routes are handled by Auth0 middleware via `proxy.ts`.
+- Main persisted collection is `gpt-chat`.
+- If a thread is deleted while open, client redirects back to `/chat`.
