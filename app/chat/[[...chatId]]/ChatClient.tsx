@@ -231,8 +231,8 @@ export default function ChatClient({
       />
       <div className="relative flex flex-1 flex-col overflow-hidden">
         {/* Messages area */}
-        <div className="flex-1 overflow-y-auto px-4 md:px-6 w-full pb-32">
-          <div className="mx-auto max-w-3xl flex flex-col pt-6">
+        <div className="flex-1 overflow-y-auto px-4 md:px-6 w-full pb-36 sm:pb-32">
+          <div className="mx-auto max-w-3xl flex flex-col pt-14 sm:pt-6">
             {allMessages.length === 0 && !incommingMessage && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -282,7 +282,7 @@ export default function ChatClient({
         </div>
 
         {/* Input footer */}
-        <footer className="absolute bottom-6 left-0 right-0 px-4">
+        <footer className="absolute bottom-3 left-0 right-0 px-3 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:px-4">
           <form onSubmit={handleSubmit} className="mx-auto max-w-3xl">
             <fieldset className="relative flex items-end gap-2 rounded-[26px] bg-[#2f2f2f] px-4 py-[14px] w-full shadow-lg">
               <textarea
